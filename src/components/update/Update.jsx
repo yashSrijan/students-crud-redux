@@ -90,6 +90,19 @@ class Update extends React.Component {
         }
     }
 
+    reset = () => {
+        this.setState({
+            email : '',
+            password : '',
+            confirmPassword : '',
+            gender : '',
+            country : countries[0],
+            hobbiesArray : [],
+            radios : arrayToObject(genders, false),
+            checkboxes : arrayToObject(hobbies, false)
+        });
+    }
+
     onUpdateClick = (e) => {
         e.preventDefault();
         if( this.validateForm() ) {
@@ -99,16 +112,7 @@ class Update extends React.Component {
            this.props.updateStudent(updatedStudentObj);
            //explicitly close the modal and set the state to as it was initially
            eventTrigger(document.getElementById('close-modal'), 'click');
-           this.setState({
-                email : '',
-                password : '',
-                confirmPassword : '',
-                gender : '',
-                country : countries[0],
-                hobbiesArray : [],
-                radios : arrayToObject(genders, false),
-                checkboxes : arrayToObject(hobbies, false)
-            });
+           this.reset();
         }
     }
 
@@ -220,12 +224,13 @@ class Update extends React.Component {
                             </div>
                             <div className="modal-footer">
                                 <button id = "close-modal" type="button"
+                                    onClick = {this.reset}
                                     className="btn btn-outline-secondary" 
                                     data-dismiss="modal"
                                 >
                                 Close
                                 </button>
-                                <button type="submit" onClick = {this.onUpdateClick} 
+                                <button type="button" onClick = {this.onUpdateClick} 
                                     className="btn btn-outline-success"
                                 >
                                     Save Changes
