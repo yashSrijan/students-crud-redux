@@ -1,5 +1,22 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Overview
+This app demonstates the CRUD operations on a simple students data. There is only one reducer(studentReducer) in this app which manages state for adding a new student, deleting some of them, updating a student etc. The Read and Delete component uses the latest useState hook from React 16.8, I could have implemented the component as a stateful component but hooks makes it more easy to manage a state within a component and the syntax is much easier too.
+
+Navigate to the root dir of the project, open the terminal and do :
+
+```bash
+npm install
+```
+this would install the required dependencies of the project listed in package.json. After this, do :
+
+```bash
+npm start
+```
+and the app should start on [localhost](http://localhost:3000) .
+
+I have also used the redux-logger package by which you can see (in the console) what actions are being dispatched to the store, what was the previous state and what is the current state. The global state ( state managed by reducer(s) ) would be preserved even after reloads, code for the same can be found in index.js and localStorage.js.
+
 ## Available Scripts
 
 In the project directory, you can run:
