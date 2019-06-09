@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware } from 'redux';
+import {logger} from 'redux-logger';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import rootReducer from './_reducers/rootReducer';
+import { saveState, loadState } from './_helpers/localStorage';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+//this function is executed everytime a reload happens on the app
+let persistedState = loadState();
+const store = createStore(
+    rootReducer,
+    persistedState,
+    applyMiddleware(logger)
+);
+
+store.subscribe(() => {
+    //everytime the state of the application changes, then save it to sessionStorage
+    saveState(store.getState());
+});
+
+ReactDOM.render(
+    <Provider store = {store}>
+        <App />
+    </Provider>
+    
+    , document.getElementById('root')
+);

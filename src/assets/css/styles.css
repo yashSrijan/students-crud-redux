@@ -1,0 +1,39 @@
+.error-msg {
+    color: red;
+    font-size: 12px;
+}
+
+.student-read-update {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+    padding : 10px 20px;
+    margin: 15px 0;
+    box-sizing: border-box;
+}
+
+.absolute {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  width: 100px;
+}
+
+.absolute label {
+    display: inline;
+    margin-left: 5px;
+}
+
+.gray {
+    color: grey;
+}
+
+.hobby {
+    display: inline-block;
+    background-color: rgb(155, 121, 187);
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    color: white;
+}

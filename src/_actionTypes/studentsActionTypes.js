@@ -1,0 +1,5 @@
+export const UPDATE_STUDENT = 'UPDATE_STUDENT';
+
+export const DELETE_STUDENTS = 'DELETE_STUDENTS';
+
+export const CREATE_STUDENT = 'CREATE_STUDENT';
